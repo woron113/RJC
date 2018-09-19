@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Calculator</title>
+</head>
+<body>
+  <h1>Javascript Calculator</h1>
+
+  <div class="calculator" id="calculator">
+        <div class="textview" id="textview">0</div>
+        <button class="button" type="button" id="clean" onclick="clean()">C</button>
+        <button class="button" type="button" onclick="vissza()"><</button>
+        <br>
+        <button class="button" type="button" onclick="insert(7)">7</button>
+        <button class="button" type="button" onclick="insert(8)">8</button>
+        <button class="button" type="button" onclick="insert(9)">9</button>
+        <button class="button" type="button" onclick="insert('-')">-</button>
+        <br>
+        <button class="button" type="button" onclick="insert(4)">4</button>
+        <button class="button" type="button" onclick="insert(5)">5</button>
+        <button class="button" type="button" onclick="insert(6)">6</button>
+        <button class="button" type="button" onclick="insert('+')">+</button>
+        <br>
+        <button class="button" type="button" onclick="insert(1)">1</button>
+        <button class="button" type="button" onclick="insert(2)">2</button>
+        <button class="button" type="button" onclick="insert(3)">3</button>
+        <button class="button" type="button" onclick="equal()">=</button>
+        <br>
+        <button class="button" type="button" onclick="insert(0)">0</button>
+        <button class="button" type="button" onclick="insert('.')">.</button>
+        <button class="button" type="button" onclick="insert('/')">/</button>
+        <button class="button" type="button" onclick="insert('*')">*</button>
+    </div>
+
+  <script>
+    function insert(num)
+    {
+      if(document.getElementById("textview").innerHTML == "0" && num != ".")
+        {
+          document.getElementById("textview").innerHTML = num;
+        }
+        else document.getElementById("textview").innerHTML += num;
+    }
+
+    function clean(){
+      document.getElementById("textview").innerHTML = "0";
+    }
+
+    function equal(){
+      var szam = document.getElementById("textview").innerHTML;
+      document.getElementById("textview").innerHTML = eval(szam);
+      var x = eval(szam);
+    }
+
+    function vissza(){
+      var vissz = document.getElementById("textview").innerHTML;
+      if(vissz.length > 1){
+        document.getElementById("textview").innerHTML = vissz.substring(0, vissz.length-1);
+      }
+    }
+
+  </script>
+
+  <style>
+  button {
+    border: 0;
+    background: rgba(0,0,0, .28);
+    color: #669900;
+    cursor: pointer;
+    float: center;
+    font: inherit;
+    margin: 0.25em;
+    width: 2em;
+    height: 2em;
+    transition: all 0.5s;
+    }
+
+  html {
+    background: #100a1c;
+    background-image:
+      radial-gradient(50% 30% ellipse at center top, #003300 0%, rgba(0,0,0,0) 100%),
+      radial-gradient(60% 50% ellipse at center bottom, #333300 0%, #1a1a00 100%);
+    background-attachment: fixed;
+    color: #669900;
+    }
+
+  body {
+    color:  #333300;
+    font: 300 18px/1.6 "Source Sans Pro",sans-serif;
+    margin: 0;
+    padding: 5em 0 2em;
+    text-align: center;
+    }
+
+  #textview {
+    color: #669900;
+    line-height: 3em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 3em;
+    font: inherit;
+    }
+
+  .calculator {
+    font-size: 1em;
+    margin: 0 auto;
+    }
+
+  h1 {
+    font-weight: 300;
+    margin: 30;
+    }
+  </style>
+</body>
+</html>
